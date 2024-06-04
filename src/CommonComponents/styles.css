@@ -1,0 +1,32 @@
+
+.listInputContainer {
+    width: 60%;
+    height: 20%;
+}
+.listInput {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 80%;
+  }
+
+  .add{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+
+.numInputContainer {
+    width: 40%;
+    height: 20%;
+}
+  .numInput {
+    padding: 12px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 20%;
+  }
