@@ -10,7 +10,7 @@ let addToList = (li, setLi, ele) => {
 
 
 
-export default StringList = ({li, setLi, title, noun, options}) => {
+export default StringList = ({li, setLi, title, noun, options, overwrite = null}) => {
 
     const [text, setText] = useState('');
     const [selected, setSelected] = useState([]);
@@ -21,14 +21,20 @@ export default StringList = ({li, setLi, title, noun, options}) => {
         setText("")
     }
 
-    useEffect(()=>{
-        console.log("li: " + li)
-        setLi(li2)
-    }, [li2])
+    if (overwrite != null){
+    
+        useEffect(() => {
+            console.log(overwrite)
+            if (overwrite.length > 0){
+                setSelected(overwrite.map((el) => {return {value: el, label:el}}))
+            }
+          
+        }, [overwrite])
+    }
+
+
 
     useEffect(() => {
-        console.log(selected)
-        //console.log(setLi)
         setLi(li => selected.map((el) => el.value)) 
         //console.log(selected.map((el) => el.value))
     }, [selected])

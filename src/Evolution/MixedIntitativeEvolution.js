@@ -3,19 +3,20 @@ import StringList from "../CommonComponents/StringListComponent"
 import NumberInput from '../CommonComponents/NumberInput';
 import { getStaticEvolution } from '../API/SendToApi';
 import { getMonsters, getPlayers } from '../API/GetFromApi';
-import SetStageDifficulties from './SetStageDifficulties';
+import MIStage from './MIStage';
 import DisplayStages from './DisplayStages';
 
 
 
 
 
-export default StaticEvolution = () => {
+export default MIEvolution = () => {
 
     let [partyNames, setPartyNames] = useState([])
     let [monsterNames, setMonsterNames] = useState([])
-    let [difficulties, setDifficulties] = useState([])
+    let [stageSettings, setStageSettings] = useState([])
     let [endText, setEndText] = useState(<div>Waiting to submit</div>)
+    let [lockedMonsters, setLockedMons] = useState([])
 
     let [playerOptions, setPlayerOptions] = useState([])
     let [monsterOptions, setMonsterOptions] = useState([])
@@ -45,26 +46,34 @@ export default StaticEvolution = () => {
                 /> 
             : <div>Loading Players</div>
 
-        let monsterSelect = monsterOptions.length > 0 ?  <StringList 
+        let monsterSelect = playerOptions.length > 0 ?  <StringList 
                 li={monsterNames} 
                 setLi = {setMonsterNames} 
                 title = "Possible Monsters" 
                 noun = "monster list"
-                options={monsterOptions}
+                options={monsterMan}
                 />
         : <div>Loading Monsters</div>
 
 
     let evolveMonsters =() => {
         return new Promise(async (resolve, reject) =>{
+            difficulties = stageSettings.map((stage) => {return stage.difficulty})
+            monsterNames = stageSettings[0].possMons
+            
             monsters = await getStaticEvolution(partyNames, monsterNames, difficulties, generation=generation, popsize=popsize, elistism=elistism)
             resolve(monsters)
         })
     }
 
+    let updateLockedMonsters = (stages) => {
+        setLockedMons(stages["stages"].map((stage) => stage.names))
+    }
+
     let startEvolution = () => {
         setEndText(<div>Evolving....</div>)
         evolveMonsters().then((monsters) => {
+            updateLockedMonsters(monsters)
             setEndText(<div>
                 <DisplayStages stages = {monsters}/>
             </div>)
@@ -72,12 +81,11 @@ export default StaticEvolution = () => {
     }
  
     return (<div>
-        <h1>Evolve an encounter!</h1>
+        <h1>Mixed Initiative Evolution!</h1>
         {playerSelect}
-        {monsterSelect}
 
     
-    <SetStageDifficulties setDifficulties={setDifficulties} setStage={setStages} stages={stages}/>
+    <MIStage setSettings={setStageSettings} settings={stageSettings} monsterMan={monsterOptions} lockedMonsterLi={lockedMonsters}  setStages={setStages} stages={stages}/>
    
 
     <div>
