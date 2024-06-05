@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import StringList from "../CommonComponents/StringListComponent"
 import NumberInput from '../CommonComponents/NumberInput';
-import { getStaticEvolution } from '../API/SendToApi';
+import { getStaticEvolution, getMIEvolution } from '../API/SendToApi';
 import { getMonsters, getPlayers } from '../API/GetFromApi';
 import MIStage from './MIStage';
 import DisplayStages from './DisplayStages';
@@ -58,16 +58,14 @@ export default MIEvolution = () => {
 
     let evolveMonsters =() => {
         return new Promise(async (resolve, reject) =>{
-            difficulties = stageSettings.map((stage) => {return stage.difficulty})
-            monsterNames = stageSettings[0].possMons
             
-            monsters = await getStaticEvolution(partyNames, monsterNames, difficulties, generation=generation, popsize=popsize, elistism=elistism)
+            monsters = await getMIEvolution(partyNames, stageSettings, generation=generation, popsize=popsize, elistism=elistism)
             resolve(monsters)
         })
     }
 
     let updateLockedMonsters = (stages) => {
-        setLockedMons(stages["stages"].map((stage) => stage.names))
+        setLockedMons(stages["stages"].map((stage) =>{return stage.lockedMons.concat(stage.names)}))
     }
 
     let startEvolution = () => {
@@ -75,7 +73,7 @@ export default MIEvolution = () => {
         evolveMonsters().then((monsters) => {
             updateLockedMonsters(monsters)
             setEndText(<div>
-                <DisplayStages stages = {monsters}/>
+                <DisplayStages stages = {monsters} mi={true}/>
             </div>)
         })
     }
