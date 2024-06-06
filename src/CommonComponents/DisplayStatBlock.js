@@ -4,10 +4,10 @@ export default StatBlock = ({stats}) => {
    console.log(stats)
     
     features = stats["features"].map((feature) => {
-        return (<div class="property-block" key={feature}>
+        return (<div class="property-block" key={feature.name}>
                     
-        <h4>{feature}</h4>
-        <p>TODO: add description</p>
+        <h4>{feature.name}.</h4>
+        <p>{feature.desc}</p>
     </div>)})
 
     featureComp = features.length > 0 ?  
@@ -17,10 +17,10 @@ export default StatBlock = ({stats}) => {
         </div> : ""
 
 
-    actions = stats["actions"].map((action) => {
-        return (  <div className="property-block">
-        <h4>{action}.</h4>
-        <p>TODO: add description</p>
+    actions = stats["actions"].map((action, i) => {
+        return (  <div className="property-block" key = {action + i}>
+        <h4>{action.name}.</h4>
+        <p>{action.desc}</p>
     </div> )})
 
     actionsComp = actions.length > 0 ?  
