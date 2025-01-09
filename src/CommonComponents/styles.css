@@ -1,6 +1,6 @@
 
 .listInputContainer {
-    width: 60%;
+    width: 100%;
     height: 20%;
 }
 .listInput {
@@ -9,6 +9,13 @@
     box-sizing: border-box;
     height: 100%;
     width: 80%;
+  }
+
+  .listSelect{
+    align-content: center;
+    background-color: bisque;
+    justify-content: center; 
+    width: 100%;
   }
 
   .add{
@@ -20,8 +27,16 @@
 
 
 .numInputContainer {
-    width: 40%;
+    width: 50%;
     height: 20%;
+
+     margin: 0 auto;
+}
+
+.numInputContainer h4{
+    display: inline;
+    width: 80%;
+    text-align: left;
 }
   .numInput {
     padding: 12px 20px;

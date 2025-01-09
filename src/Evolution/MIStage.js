@@ -27,7 +27,7 @@ let StageSettings=({title, i , monsterMan, lockedMonsterLi, settings, setSetting
 
 
     return (
-        <div>
+        <div className='section'>
             <h2>
                 {title}
             </h2>

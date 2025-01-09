@@ -41,14 +41,15 @@ export default StringList = ({li, setLi, title, noun, options, overwrite = null}
 
  
 
-    return (<div>
-        <h2>{title}</h2>
+    return (<div >
+        <h3>{title}</h3>
         <div className='listInputContainer'> 
         <MultiSelect
         options={options}
         value={selected}
         onChange={setSelected}
         labelledBy="Select"
+        className='listSelect'
       />
         {/*<Select
         isMulti

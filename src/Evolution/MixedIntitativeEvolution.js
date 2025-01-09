@@ -5,7 +5,7 @@ import { getStaticEvolution, getMIEvolution } from '../API/SendToApi';
 import { getMonsters, getPlayers } from '../API/GetFromApi';
 import MIStage from './MIStage';
 import DisplayStages from './DisplayStages';
-
+import "./evolution.css"
 
 
 
@@ -37,13 +37,14 @@ export default MIEvolution = () => {
         getData()
       }, [])
 
-      let playerSelect = playerOptions.length > 0 ?  <StringList 
+      let playerSelect = playerOptions.length > 0 ? <div className='section'> <h2>Select Party Members</h2> <StringList 
                 li={partyNames} 
                 setLi = {setPartyNames} 
                 options={playerOptions}
                 title = "Party Members" 
                 noun = "party"
                 /> 
+                </div>
             : <div>Loading Players</div>
 
         let monsterSelect = playerOptions.length > 0 ?  <StringList 
@@ -78,15 +79,19 @@ export default MIEvolution = () => {
         })
     }
  
-    return (<div>
+    return (<div className='stat-block wide'>
+         <hr class="orange-border" />
         <h1>Mixed Initiative Evolution!</h1>
+        
         {playerSelect}
 
     
     <MIStage setSettings={setStageSettings} settings={stageSettings} monsterMan={monsterOptions} lockedMonsterLi={lockedMonsters}  setStages={setStages} stages={stages}/>
    
 
-    <div>
+    <div className='section'>
+
+        <h2>Evolution Settings</h2>
 
             <NumberInput 
                 num={generation}
@@ -110,8 +115,16 @@ export default MIEvolution = () => {
     
         <button onClick={startEvolution}>Start Evolution!</button>
 
-    <h1>Generated encounter:</h1>
+    
+    <div className='section'>
+
+   
+
+    <h2>Generated encounter</h2>
+    
     {endText}
+    </div>
+    <hr class="orange-border bottom" />
     </div>)
 
 

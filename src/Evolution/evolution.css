@@ -25,30 +25,6 @@ body {
     min-width: 560px;
     text-align: center;
   }
-
-
-  .stat-block.wide.extra{
-    width: 60%;
-
-  }
-
-  .highlighted{
-    background-color: #922610 !important;
-    color:  #FDF1DC !important; 
-    font-weight: bold !important;
-
-  }
-
-
-  .not_highlighted{
-    background-color: tan!important;
-
-
-  }
-
-
-
-  
   .stat-block.wide .section-left,
   .stat-block.wide .section-right{
     display: inline-block;
@@ -98,8 +74,9 @@ body {
     color: #922610;
     fill: #922610;
     stroke: #922610;
+    margin: 0 auto;
   }
-  .creature-heading h1, .creature-heading input{
+  .stat-block h1{
     font-family: 'Libre Baskerville', 'Lora', 'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif;
     color: #922610;
     font-size: 23px;
@@ -109,92 +86,17 @@ body {
     font-variant: small-caps;
     font-weight: bold;
   }
-
-  .actions input{
-    border: none;
-    border-bottom: 1px solid #8a564b;
-    background: transparent;
-    margin-bottom: 10px;
-    text-align: center;
-   
-
-  }
-
-  .actionName{
-    border: none;
-    border-bottom: 1px solid black;
-    background: transparent;
-    margin-bottom: 10px;
-    font-weight: normal;
-    font-style: normal; 
-    width: 70px;
-    font-weight: bold;
-  }
-
-  .tinyInput{
-    border: none;
-    border-bottom: 1px solid black;
-    background: transparent;
-    margin-bottom: 10px;
-    font-weight: normal;
-    font-style: normal; 
-    width: 30px;
-
-  
-  }
-
-
-  .smallInput{
-    border: none;
-    border-bottom: 1px solid black;
-    background: transparent;
-    margin-bottom: 10px;
-    font-weight: normal;
-    font-style: normal; 
-    width: 30px;
-  }
-
-  .medInput{
-    border: none;
-    border-bottom: 1px solid black;
-    background: transparent;
-    margin-bottom: 10px;
-    font-weight: normal;
-    font-style: normal; 
-    width: 80px;
-  }
-
-
-
-  .creature-heading input{
-    
-    border: none;
-    border-bottom: 1px solid #8a564b;
-    background: transparent;
-    margin-bottom: 10px;
-  }
-  .creature-heading h2{
-    font-weight: normal;
-    font-style: italic;
-    font-size: 12px;
+  .stat-block h2{
+    font-family: 'Libre Baskerville', 'Lora', 'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif;
+    color: #922610;
+    font-size: 18px;
     line-height: 1.2em;
-    margin: 0 0 10px;
-  }
+    margin: 10px 0 0;
+    letter-spacing: 1px;
 
-
-
-  .creature-heading button{
-    font-weight: normal;
-    font-style: italic;
-    font-size: 12px;
-    line-height: 1.2em;
-    margin: 0 0 10px;
-    width: 40%;
-    height: 20px; 
   }
   .property-line h4,
-  .property-line p, 
-  .property-line input{
+  .property-line p{
     display: inline;
     margin: 0;
     color: #922610;
@@ -202,24 +104,6 @@ body {
     line-height: 1.2em;
     padding-left: 0.5em;
 
-  }
-
-  .property-line button, 
-  .actions button{
-    width: 40px;
-    height: 25px;
-    font-size: 11px;
-    line-height: 1.2em;
-    padding-left: 0.5em;
-  }
-
-  .property-line input{
-    border: none;
-    border-bottom: 1px solid #8a564b;
-    background: transparent;
-    width: 10%; 
-    
-  
   }
   .property-line h4{
     color: #7A200D;
@@ -247,14 +131,6 @@ body {
     font-size: 12px;
     line-height: 1em;
   }
-
-  .abilities > div input {
-    color: #922610;
-    border: none;
-    border-bottom: 1px solid #8a564b;
-    background: transparent;
-    width: 30%;
-  }
   .abilities h4{
     margin: 10px 0 2px;
     font-size: 14px;
@@ -279,28 +155,27 @@ body {
     display: inline;
     margin: 0;
   }
-
   .property-block h4{
     font-style: italic;
   }
   .property-block{
     padding: 10px 2px 0;
   }
-  .actions h3{
+  .section h2{
     border-bottom: 1px solid #7A200D;
     color: #7A200D;
     font-size: 21px;
     font-variant: small-caps;
     font-weight: normal;
     letter-spacing: 1px;
-    margin: 20px 0 0;
+    margin: 20px 10px;
     padding: 0 0 10px;
     text-indent: 5px;
   }
-  .actions{
+  .section{
     margin: 0 0 20px;
   }
-  .actions:last-child{
+  .section:last-child{
     margin: 0;
   }
   
@@ -337,7 +212,29 @@ body {
           margin: 20px 0;
       }
   }
+  
 
-   .this_button{
-    width: 10px !important; 
-  }
+/* CSS */
+.stat-block button {
+  background-color: #fbeee0;
+  border: 2px solid #7A200D;
+  border-radius: 10px;
+  color: #7A200D;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 5px;
+}
+
+.stat-block button:hover {
+  background-color: #fff;
+}
+

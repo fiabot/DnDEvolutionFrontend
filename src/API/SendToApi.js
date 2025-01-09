@@ -1,4 +1,4 @@
-import {api, STATIC_EVOLVE_ENDPOINT, MI_EVOLVE_ENDPOINT} from './config' 
+import {api, STATIC_EVOLVE_ENDPOINT, ADD_MONSTER_ENDPOINT,  MI_EVOLVE_ENDPOINT} from './config' 
 
 let getStaticEvolution = async (party, monsters, ideal_diff, generation= 10, popsize=10, elistism= 5) => {
 
@@ -18,4 +18,10 @@ let getMIEvolution = async (party, stageSettings,  generation= 10, popsize=10, e
     return response.data 
 }
 
-export {getStaticEvolution, getMIEvolution}
+let addMonster = async(monsterData) => {
+    response = await api.post(ADD_MONSTER_ENDPOINT, monsterData)
+    return response
+
+}
+
+export {getStaticEvolution, getMIEvolution, addMonster}
